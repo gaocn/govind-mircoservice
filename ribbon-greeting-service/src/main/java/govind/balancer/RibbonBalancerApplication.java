@@ -2,14 +2,20 @@ package govind.balancer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 //向eureka注册自己作为一个服务的调用，而EnableEurekaClient代表的是向eureka注册自己将自己作为一个服务
 @EnableDiscoveryClient
+@EnableHystrix
+@EnableCircuitBreaker
+@EnableHystrixDashboard
 public class RibbonBalancerApplication {
 
 	public static void main(String[] args) {
